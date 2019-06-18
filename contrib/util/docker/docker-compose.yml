@@ -93,24 +93,6 @@ services:
     - 8220:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
-  mysql-old:
-    restart: always
-    image: mysql:5.7
-    command: ['mysqld','--character-set-server=utf8']
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-  mysql-very-old:
-    restart: always
-    image: mysql:5.6
-    command: ['mysqld','--character-set-server=utf8']
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-  mysql-very-very-old:
-    restart: always
-    image: mysql:5.5
-    command: ['mysqld','--character-set-server=utf8']
-    environment:
-      MYSQL_ROOT_PASSWORD: root
   phpmyadmin:
     restart: always
     image: phpmyadmin/phpmyadmin
@@ -118,15 +100,6 @@ services:
     - 8200:80
     environment:
       PMA_HOSTS: mariadb-dev,mariadb,mariadb-old,mariadb-very-old,mariadb-very-very-old,mariadb-very-very-very-old,mysql,mysql-old,mysql-very-old,mysql-very-very-old
-  couchdb:
-    restart: always
-    image: couchdb
-    ports:
-    - 5984:5984
-    - 6984:6984
-    environment:
-      COUCHDB_USER: admin
-      COUCHDB_PASSWORD: password
   orthanc:
     restart: always
     image: jodogne/orthanc-plugins
